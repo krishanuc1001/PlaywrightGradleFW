@@ -1,0 +1,26 @@
+# Project exclude paths
+
+### Gradle ###
+/.gradle/
+/build/
+/build/classes/java/main/
+/build/classes/java/test/
+**/build/
+.idea
+
+#####################
+# testNG Reports
+#####################
+testNGOutput
+
+#####################
+# Extent Reports
+#####################
+ExtentReport-output
+
+#####################
+# Logs
+#####################
+logs
+
+test-output
