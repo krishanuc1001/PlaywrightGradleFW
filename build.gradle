@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.16.1'
+    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.26.0'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.0.3'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.21.0'
