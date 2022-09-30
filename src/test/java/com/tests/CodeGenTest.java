@@ -41,7 +41,6 @@ public class CodeGenTest {
             // Fill [data-test="username"]
             page.locator("[data-test=\"username\"]").fill("problem_user");
 
-
             // Press Tab
             page.locator("[data-test=\"password\"]").press("Tab");
 
