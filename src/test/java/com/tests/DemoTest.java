@@ -13,7 +13,12 @@ public class DemoTest {
 
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        Browser browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        /**
+         * Launching test on stock Chrome or MSEdge browsers for Regression testing purpose
+         * Can be "msedge", "chrome-beta", "msedge-beta", "msedge-dev", etc.
+         */
+        // Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome"));
         Page page = browser.newPage();
         page.navigate("https://www.google.com");
         System.out.println("Page title => " + page.title());
@@ -21,6 +26,7 @@ public class DemoTest {
         page.click("//input[@name='btnK']");
         page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot_" + new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date()) + ".png")));
 
+        page.close();
         browser.close();
         playwright.close();
     }
