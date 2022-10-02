@@ -1,13 +1,17 @@
 package com.tests;
 
 import com.microsoft.playwright.*;
+
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class CodeGenTest {
 
     /**
      * @author Krish
-     *
      * Command to see all the options:
      * npx playwright codegen --help
      *
@@ -22,14 +26,20 @@ public class CodeGenTest {
      *
      * Command to emulate devices:
      * npx playwright codegen --device="iPhone 13 Pro"
-     *
      */
 
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            BrowserContext browserContext = browser.newContext();
 
-            Page page = browser.newPage();
+            // Start tracing before creating / navigating a page.
+            browserContext.tracing().start(new Tracing.StartOptions()
+                    .setScreenshots(true)
+                    .setSnapshots(true)
+                    .setSources(true));
+
+            Page page = browserContext.newPage();
 
             // Go to https://www.saucedemo.com/
             page.navigate("https://www.saucedemo.com/");
@@ -62,6 +72,12 @@ public class CodeGenTest {
 
             // Click [data-test="add-to-cart-sauce-labs-fleece-jacket"]
             page.locator("[data-test=\"add-to-cart-sauce-labs-fleece-jacket\"]").click();
+
+            // Stop tracing and export it into a zip archive.
+            browserContext.tracing().stop(new Tracing.StopOptions()
+                    .setPath(Paths.get("trace_" + DemoTest.class.getSimpleName() + "_" +
+                            new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date()) + ".zip")));
+
         }
     }
 }
