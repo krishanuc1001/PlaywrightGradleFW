@@ -5,20 +5,20 @@ import java.util.Date;
 
 import com.enums.ConfigPropertiesEnum;
 import com.utils.PropertiesUtils;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FrameworkConstants {
 
-    private FrameworkConstants() {
-    }
-
     private static final String PATHTORESOURCES = System.getProperty("user.dir") + "/src/test/resources";
-
     private static final String CONFIGPROPPATH = PATHTORESOURCES + "/config/config.properties";
     private static final String CONFIGJSONPATH = PATHTORESOURCES + "/jsons/config.json";
     private static final String EXCELPATH = System.getProperty("user.dir") + "/excel/SampleTestDataWorkbook.xlsx";
     private static final String EXTENTREPORFOLDERTPATH = System.getProperty("user.dir") + "/ExtentReport-output/";
     private static final String RUNMANAGERSHEET = "RUNMANAGER";
     private static final String DATASHEET = "DATA";
+    private static final String HOME_PAGE_TITLE = "Your Store";
 
     private static String extentReportFilePath = "";
 
@@ -70,6 +70,10 @@ public final class FrameworkConstants {
 
     public static String getDatasheet() {
         return DATASHEET;
+    }
+
+    public static String getActualHomePageTitle() {
+        return HOME_PAGE_TITLE;
     }
 
 }
