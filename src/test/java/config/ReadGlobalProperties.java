@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-class ReadGlobalProperties {
+public class ReadGlobalProperties {
 
     Properties pro;
 
@@ -36,7 +36,7 @@ class ReadGlobalProperties {
 
     }
 
-    public static void populateSettings(){
+    public static void populateSettings() {
         new ReadGlobalProperties().readProperties();
     }
 
