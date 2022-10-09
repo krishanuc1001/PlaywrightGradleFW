@@ -3,6 +3,11 @@ package com.factories;
 import com.microsoft.playwright.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 @Slf4j
 public class PlaywrightFactory {
 
@@ -11,8 +16,11 @@ public class PlaywrightFactory {
     public BrowserContext browserContext;
     public Page page;
 
-    public Page initBrowser(String browserName) {
+    Properties properties;
 
+    public Page initBrowser(Properties prop) {
+
+        String browserName = prop.getProperty("browser").trim();
         log.info("<<======= USING BROWSER" + browserName + "=======>>");
         playwright = Playwright.create();
 
@@ -37,9 +45,24 @@ public class PlaywrightFactory {
 
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://naveenautomationlabs.com/opencart/");
+        page.navigate(prop.getProperty("url").trim());
 
         return page;
+    }
+
+    public Properties initProperties() {
+
+        try (FileInputStream fis = new FileInputStream("./src/test/resources/config/config.properties");) {
+            properties = new Properties();
+            properties.load(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return properties;
+
     }
 
 }
