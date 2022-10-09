@@ -1,21 +1,21 @@
 package com.tests;
 
+import com.pages.HomePageOld;
 import org.testng.annotations.Test;
-import com.pages.HomePage;
 
-public class CreateDeleteEmpTest extends BaseTest {
+public class CreateDeleteEmpTestX extends BaseTestX {
 
     @Test(priority = 1, enabled = false)
     public void createNewEmployeeTest() {
-        new HomePage().clickEmpListBtn();
-        new HomePage().clickCreateNew()
+        new HomePageOld().clickEmpListBtn();
+        new HomePageOld().clickCreateNew()
                 .createEmployee("Krishanu", "20000", "5", "2", "abc@gmail.com");
     }
 
     @Test(priority = 2, enabled = false)
     public void deleteEmployeeTest() {
-        new HomePage().clickEmpListBtn();
-        new HomePage().deleteEmployee("Krishanu").clickDelBtn();
+        new HomePageOld().clickEmpListBtn();
+        new HomePageOld().deleteEmployee("Krishanu").clickDelBtn();
     }
 
     @Test(enabled = true)
