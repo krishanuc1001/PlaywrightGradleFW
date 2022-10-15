@@ -12,8 +12,9 @@ public class BaseTest {
 
     PlaywrightFactory playwrightFactory;
     protected Page page;
-    protected HomePage homePage;
     protected Properties properties;
+
+    protected HomePage homePage;
 
     @BeforeTest
     public void setUp() {

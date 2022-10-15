@@ -1,9 +1,4 @@
-package com.extentReporting;
-
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.enums.ConfigPropertiesEnum;
-import com.utils.PropertiesUtils;
-import com.utils.ScreenshotUtils;
+package com.testUtilities.extentReporting;
 
 public final class ExtentLogger {
 

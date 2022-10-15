@@ -1,4 +1,4 @@
-package com.extentReporting;
+package com.testUtilities.extentReporting;
 
 import java.awt.Desktop;
 import java.io.File;

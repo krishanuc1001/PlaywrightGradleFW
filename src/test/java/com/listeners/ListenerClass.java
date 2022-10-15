@@ -2,8 +2,8 @@ package com.listeners;
 
 import com.customAnnotations.FrameworkAnnotations;
 import com.enums.CategoryTypeEnum;
-import com.extentReporting.ExtentLogger;
-import com.extentReporting.ExtentReport;
+import com.testUtilities.extentReporting.ExtentLogger;
+import com.testUtilities.extentReporting.ExtentReport;
 import com.utils.ELKUtils;
 import org.testng.*;
 

@@ -6,7 +6,7 @@ public class BaseTestX {
 //    public void setUp() {
 //        BrowserIntialize.localPage = new FrameworkInitialize().initializePlaywright();
 //        BrowserIntialize.localPage.navigate(TestSettings.url);
-////        new LoginPage(page).login("admin", "password");
+////        new LoginPageOld(page).login("admin", "password");
 //    }
 //
 //
