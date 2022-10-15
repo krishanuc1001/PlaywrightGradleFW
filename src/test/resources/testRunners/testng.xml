@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PlaywrightPoCGSuite">
-    <test verbose="2" name="PlaywrightPoCGTests">
+<suite name="PlaywrightPoCGSuite" thread-count="2" verbose="4">
+
+    <test verbose="2" name="Home Page Tests">
         <classes>
-
-            <class name="com.tests.HomePageTest">
-                <methods>
-                    <include name="validateHomePageTitle"/>
-                    <include name="validateHomePageURL"/>
-                    <include name="validateSearchFunctionality"/>
-                </methods>
-            </class>
-
-            <!--            <class name="com.tests.CreateDeleteEmpTestX">-->
-            <!--                <methods>-->
-            <!--                    <include name="createNewEmployeeTest"/>-->
-            <!--                    <include name="deleteEmployeeTest"/>-->
-            <!--                    <include name="createDeleteEmpTest"/>-->
-            <!--                </methods>-->
-            <!--            </class>-->
-
-            <!--            <class name="com.tests.LoginTestX">-->
-            <!--                <methods>-->
-            <!--                    <include name="loginTest"/>-->
-            <!--                </methods>-->
-            <!--            </class>-->
-
+            <class name="com.tests.HomePageTest"/>
         </classes>
     </test>
+
+    <test verbose="2" name="Login Page Tests">
+        <classes>
+            <class name="com.tests.LoginPageTest"/>
+        </classes>
+    </test>
+
 </suite>
