@@ -38,8 +38,17 @@ dependencies {
 
 test { //this is the gradle task to be executed
     useTestNG() { //Tells Gradle to use TestNG
+
+//        listeners << 'com.listeners.ListenerClass'
+//        listeners << 'com.testUtilities.listeners.AnnotationTransformer'
+//
+//        if (project.hasProperty('groups')) {
+//            includeGroups((String) project.findProperty('groups'))
+//            excludeGroups 'flaky', 'oos'
+//        }
+
         useDefaultListeners = true // Tells TestNG to execute its default reporting structure
-        suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testRunners/testng.xml'
         //  includeGroups 'test', 'sanity'
         //  excludeGroups 'requests'
 
