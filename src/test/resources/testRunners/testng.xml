@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PlaywrightPoCGSuite" thread-count="2" verbose="4">
+<suite name="PlaywrightPoCGSuite" thread-count="2" parallel="tests" verbose="4">
 
     <test verbose="2" name="Home Page Tests">
         <classes>
