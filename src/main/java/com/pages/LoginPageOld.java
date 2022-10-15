@@ -1,15 +1,13 @@
 package com.pages;
 
-import base.FrameworkInitialize;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 
-public class LoginPage extends FrameworkInitialize{
+public class LoginPageOld {
 
-    private Page page = new FrameworkInitialize().getPage(new FrameworkInitialize().getBrowserContext());
-    // private Page page;
+    // private Page page = new FrameworkInitialize().getPage(new FrameworkInitialize().getBrowserContext());
+    private Page page;
 
-//    public LoginPage(Page page) {
+//    public LoginPageOld(Page page) {
 //        this.page = page;
 //    }
 
@@ -18,13 +16,13 @@ public class LoginPage extends FrameworkInitialize{
     private String loginBtnHomePage = "//a[text()='Login']";
     private String loginBtnLoginPage = "//input[@value='Log in']";
 
-    public HomePage login(String username, String password) {
+    public HomePageOld login(String username, String password) {
         page.click(loginBtnHomePage);
         page.fill(userName, username);
         page.fill(passWord, password);
         page.click(loginBtnLoginPage);
 
-        return new HomePage();
+        return new HomePageOld();
     }
 
 }

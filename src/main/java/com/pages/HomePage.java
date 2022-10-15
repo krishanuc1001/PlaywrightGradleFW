@@ -12,6 +12,8 @@ public class HomePage {
 
     private String search = "xpath=//input[@name='search']";
     private String searchBtn = "div#search button";
+    private String myAccountBtn = "//span[normalize-space()='My Account']";
+    private String loginBtn = "xpath=//ul[@class='dropdown-menu dropdown-menu-right']//a[normalize-space()='Login']";
 
     public String getHomePageTitle() {
         String homePageTitle = page.title();
@@ -31,5 +33,10 @@ public class HomePage {
         return new SearchResultPage(page);
     }
 
+    public LoginPage navigateToLoginPage() {
+        page.click(myAccountBtn);
+        page.click(loginBtn);
+        return new LoginPage(page);
+    }
 
 }

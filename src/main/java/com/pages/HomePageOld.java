@@ -1,14 +1,13 @@
 package com.pages;
 
-import base.BrowserIntialize;
 import com.microsoft.playwright.Page;
 
-public class HomePage {
+public class HomePageOld {
 
-    private Page page = .localPage;
-    // private Page page;
+    // private Page page = browser.localPage;
+    private Page page;
 
-//    public HomePage(Page page) {
+//    public HomePageOld(Page page) {
 //        FrameworkConfig.localPage = page;
 //    }
 

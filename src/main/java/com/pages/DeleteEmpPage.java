@@ -1,23 +1,22 @@
 package com.pages;
 
-import base.BrowserIntialize;
 import com.microsoft.playwright.Page;
 
 public class DeleteEmpPage {
 
-    private Page page = .localPage;
+    private Page page;
 
     private String deleteBtn = "//input[@value='Delete']";
     private String backToLst = "//a[normalize-space()='Back to List']";
 
-    public HomePage clickDelBtn() {
+    public HomePageOld clickDelBtn() {
         page.click(deleteBtn);
-        return new HomePage();
+        return new HomePageOld();
     }
 
-    public HomePage clickBackToList() {
+    public HomePageOld clickBackToList() {
         page.click(backToLst);
-        return new HomePage();
+        return new HomePageOld();
     }
 
 }

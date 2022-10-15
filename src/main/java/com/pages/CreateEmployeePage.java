@@ -1,11 +1,10 @@
 package com.pages;
 
-import base.BrowserIntialize;
 import com.microsoft.playwright.Page;
 
 public class CreateEmployeePage {
 
-    private Page page = .localPage;
+    private Page page;
     // private Page page;
 
 //    public CreateEmployeePage(Page page) {
@@ -19,7 +18,7 @@ public class CreateEmployeePage {
     private String emailField = "//input[@id='Email']";
     private String createBtn = "//input[@value='Create']";
 
-    public HomePage createEmployee(String name, String salary, String duration, String grade, String email) {
+    public HomePageOld createEmployee(String name, String salary, String duration, String grade, String email) {
         page.fill(nameField, name);
         page.fill(salaryField, salary);
         page.fill(durationWorkedField, duration);
@@ -28,7 +27,7 @@ public class CreateEmployeePage {
 
         page.click(createBtn);
 
-        return new HomePage();
+        return new HomePageOld();
     }
 
 }
