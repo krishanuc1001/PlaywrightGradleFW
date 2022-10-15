@@ -1,12 +1,12 @@
 package com.constants;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.enums.ConfigPropertiesEnum;
 import com.utils.PropertiesUtils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FrameworkConstants {
@@ -19,6 +19,7 @@ public final class FrameworkConstants {
     private static final String RUNMANAGERSHEET = "RUNMANAGER";
     private static final String DATASHEET = "DATA";
     private static final String HOME_PAGE_TITLE = "Your Store";
+    private static final String LOGIN_PAGE_TITLE = "Account Login";
 
     private static String extentReportFilePath = "";
 
@@ -40,21 +41,9 @@ public final class FrameworkConstants {
         }
     }
 
-//    public static String getChromedriverpath() {
-//        return CHROMEDRIVERPATH;
-//    }
-//
-//    public static String getFirefoxdriverpath() {
-//        return GECKODRIVERPATH;
-//    }
-
     public static String getConfigproppath() {
         return CONFIGPROPPATH;
     }
-
-//    public static int getExplicityWaitTime() {
-//        return EXPLICITLYWAITTIME;
-//    }
 
     public static String getConfigjsonpath() {
         return CONFIGJSONPATH;
@@ -74,6 +63,10 @@ public final class FrameworkConstants {
 
     public static String getActualHomePageTitle() {
         return HOME_PAGE_TITLE;
+    }
+
+    public static String getActualLoginPageTitle() {
+        return LOGIN_PAGE_TITLE;
     }
 
 }
