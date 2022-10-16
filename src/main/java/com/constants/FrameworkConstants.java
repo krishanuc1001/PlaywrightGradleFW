@@ -23,8 +23,6 @@ public final class FrameworkConstants {
 
     private static String extentReportFilePath = "";
 
-    // private static final int EXPLICITLYWAITTIME = 30;
-
     public static String getExtentReportFilePath() {
         if (extentReportFilePath.isEmpty()) {
             extentReportFilePath = createReportPath();
@@ -34,11 +32,15 @@ public final class FrameworkConstants {
 
     public static String createReportPath() {
         if (PropertiesUtils.get(ConfigPropertiesEnum.OVERRIDEREPORTS).equalsIgnoreCase("no")) {
-            return EXTENTREPORFOLDERTPATH + new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date()) + "/"
+            return EXTENTREPORFOLDERTPATH + new SimpleDateFormat("dd_MM_yyyy").format(new Date()) + "/"
                     + new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date()) + "_ExtentReport.html";
         } else {
             return EXTENTREPORFOLDERTPATH + "/" + "ExtentReport.html";
         }
+    }
+
+    public static String getExtentReportFolderPath() {
+        return EXTENTREPORFOLDERTPATH;
     }
 
     public static String getConfigproppath() {
