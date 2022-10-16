@@ -48,15 +48,20 @@ dependencies {
 test { //this is the gradle task to be executed
     useTestNG() { //Tells Gradle to use TestNG
 
-//        listeners << 'com.listeners.ListenerClass'
-//        listeners << 'com.testUtilities.listeners.AnnotationTransformer'
-//
-//        if (project.hasProperty('groups')) {
-//            includeGroups((String) project.findProperty('groups'))
-//            excludeGroups 'flaky', 'oos'
-//        }
+        listeners << 'com.testUtilities.listeners.ExtentReportListener'
+        listeners << 'com.testUtilities.listeners.AllureReportListener'
+        listeners << 'com.testUtilities.listeners.AnnotationTransformer'
 
-        useDefaultListeners = true // Tells TestNG to execute its default reporting structure
+        if (project.hasProperty('groups')) {
+            includeGroups((String) project.findProperty('groups'))
+            excludeGroups 'flaky', 'oos'
+        }
+
+        options {
+            setParallel('methods')
+            setThreadCount(3)
+        }
+
         suites 'src/test/resources/testRunners/testng.xml'
         //  includeGroups 'test', 'sanity'
         //  excludeGroups 'requests'
@@ -69,5 +74,20 @@ test { //this is the gradle task to be executed
     //To display the following test events
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
+    }
+
+    finalizedBy {
+        allureReport
+    }
+}
+
+/**
+ * Note: The below command would open the Allure report for the current test
+ * execution in the system default browser.
+ * Comment/ uncomment as per requirement when running locally.
+ */
+allureReport {
+    finalizedBy {
+        allureServe
     }
 }
