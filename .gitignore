@@ -12,6 +12,7 @@
 # testNG Reports
 #####################
 testNGOutput
+test-output
 
 #####################
 # Extent Reports
@@ -23,4 +24,7 @@ ExtentReport-output
 #####################
 logs
 
-test-output
+#####################
+# Screenshots
+#####################
+Screenshots
