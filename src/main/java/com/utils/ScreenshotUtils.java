@@ -1,17 +1,24 @@
 package com.utils;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import com.microsoft.playwright.Page;
 
-// import com.drivers.DriverManager;
+import java.nio.file.Paths;
+import java.util.Base64;
+
+import static com.factories.PlaywrightFactory.getPage;
 
 public final class ScreenshotUtils {
-	
-	private ScreenshotUtils() {
-	}
 
-//	public static String getBase64Image() {
-//		 return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
-//	}
+    private ScreenshotUtils() {
+    }
+
+    public static String takeScreenshot() {
+        String path = System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png";
+        byte[] buffer = getPage().screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get(path))
+                .setFullPage(true));
+        String base64Path = Base64.getEncoder().encodeToString(buffer);
+        return base64Path;
+    }
 
 }
