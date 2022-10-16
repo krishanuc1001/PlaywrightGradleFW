@@ -14,26 +14,35 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.microsoft.playwright', name: 'playwright', version: '1.26.0'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0'
-    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.0.3'
-    implementation group: 'joda-time', name: 'joda-time', version: '2.10.13'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-    implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
-    implementation group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '4.1.2'
-    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
-    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '5.0.1'
-    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.0'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
-    implementation group: 'commons-io', name: 'commons-io', version: '20030203.000550'
-    implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.9'
-    implementation group: 'org.testng', name: 'testng', version: '7.4.0'
+    implementation "com.microsoft.playwright:playwright:${playwrightVersion}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
+    implementation "org.jetbrains:annotations:${annotationsVersion}"
+    implementation "joda-time:joda-time:${jodaTimeVersion}"
+    implementation "org.apache.commons:commons-lang3:${commonslang3Version}"
+    implementation "org.apache.poi:poi:${poiVersion}"
+    implementation "org.apache.poi:poi-ooxml:${poiVersion}"
+    implementation "org.apache.poi:poi-ooxml-lite:${poOoxlSchemasVersion}"
+    implementation "org.apache.xmlbeans:xmlbeans:${xmlBeansVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.aventstack:extentreports:${extentReportsVersion}"
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    implementation "org.json:json:${jsonVersion}"
+    implementation "com.amazonaws:aws-java-sdk-secretsmanager:${awsJavaSdkVerion}"
+    implementation "org.springframework.amqp:spring-rabbit:${springRabbitVersion}"
+    implementation "org.postgresql:postgresql:${postgresqlJDBCVerion}"
+    implementation "com.browserstack:browserstack-local-java:${browserstackLocalVersion}"
+    implementation "com.deque:axe-selenium:${axeVersion}"
     implementation "io.qameta.allure:allure-testng:${allureTestNgVersion}"
+    implementation "org.testng:testng:${testNGVersion}"
 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.21.0'
-    testImplementation group: 'org.assertj', name: 'assertj-joda-time', version: '2.2.0'
-    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.4.0'
+    testImplementation "org.assertj:assertj-joda-time:${assertjJodatimeVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjcoreVersion}"
+
+    testRuntimeOnly "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    testRuntimeOnly "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    testRuntimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
 }
 
 test { //this is the gradle task to be executed
