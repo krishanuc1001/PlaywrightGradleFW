@@ -2,9 +2,12 @@ package com.tests;
 
 import com.base.BaseTest;
 import com.constants.FrameworkConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Slf4j
+@Test(groups = {"loginPageTests", "pageTests"})
 public class LoginPageTest extends BaseTest {
 
     @Test(priority = 1)
