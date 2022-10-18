@@ -1,0 +1,84 @@
+# To execute this docker-compose yml file use `docker-compose up`
+# To stop the execution, hit Ctrl+C, and then `docker-compose down`
+version: "3.3"
+services:
+
+  playwright-gradle-framework:
+    container_name: playwright-gradle-framework
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - selenium-hub
+      - chrome
+      - edge
+      - firefox
+    environment:
+      - GRADLE_USER_HOME=/gradle_user_home
+    volumes:
+      - ./src:/app/src
+      - ./build.gradle:/app/build.gradle
+      - ./gradle.properties:/app/gradle.properties
+      - ./settings.gradle:/app/settings.gradle
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gradle_user_home:/gradle_user_home
+
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    restart: always
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:latest
+    shm_size: 2gb
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    restart: on-failure:3
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=3
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_GRID_URL="http://localhost:4444/wd/hub"
+
+  edge:
+    image: selenium/node-edge:latest
+    shm_size: 2gb
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    restart: on-failure:3
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=3
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_GRID_URL="http://localhost:4444/wd/hub"
+
+  firefox:
+    image: selenium/node-firefox:latest
+    shm_size: 2gb
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    restart: on-failure:3
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=3
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_GRID_URL="http://localhost:4444/wd/hub"
+
+volumes:
+  gradle_user_home:
