@@ -1,5 +1,6 @@
 package com.utils;
 
+import com.constants.FrameworkConstants;
 import com.microsoft.playwright.Page;
 
 import java.nio.file.Paths;
@@ -13,12 +14,11 @@ public final class ScreenshotUtils {
     }
 
     public static String takeScreenshot() {
-        String path = System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png";
+        String path = FrameworkConstants.getScreenshotFolderPath() + System.currentTimeMillis() + ".png";
         byte[] buffer = getPage().screenshot(new Page.ScreenshotOptions()
                 .setPath(Paths.get(path))
                 .setFullPage(true));
-        String base64Path = Base64.getEncoder().encodeToString(buffer);
-        return base64Path;
+        return Base64.getEncoder().encodeToString(buffer);
     }
 
 }
