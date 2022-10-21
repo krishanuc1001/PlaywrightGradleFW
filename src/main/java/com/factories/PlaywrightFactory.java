@@ -1,20 +1,19 @@
 package com.factories;
 
+import com.constants.FrameworkConstants;
 import com.microsoft.playwright.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 @Slf4j
 public class PlaywrightFactory {
 
-    public Playwright playwright;
-    public Browser browser;
-    public BrowserContext browserContext;
-    public Page page;
+    protected Playwright playwright = null;
+    protected Browser browser = null;
+    protected BrowserContext browserContext = null;
+    protected Page page = null;
 
     Properties properties;
 
@@ -43,7 +42,7 @@ public class PlaywrightFactory {
     public Page initBrowser(Properties prop) {
 
         String browserName = prop.getProperty("browser").trim();
-        log.info("<<======= USING BROWSER" + browserName + "=======>>");
+        System.out.println("<<======= USING BROWSER: " + browserName + " =======>>");
         tlPlaywright.set(Playwright.create());
 
         switch (browserName.toLowerCase()) {
@@ -53,6 +52,9 @@ public class PlaywrightFactory {
             case "chrome":
                 tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false)));
                 break;
+            case "msedge":
+                tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(false)));
+                break;
             case "firefox":
                 tlBrowser.set(getPlaywright().firefox().launch(new BrowserType.LaunchOptions().setHeadless(false)));
                 break;
@@ -61,7 +63,7 @@ public class PlaywrightFactory {
                 break;
 
             default:
-                log.info("<<============ WARNING !!! Please pass correct Browser name. ============>>");
+                System.out.println("<<============ WARNING !!! Please pass correct Browser name. ============>>");
                 break;
         }
 
@@ -74,12 +76,10 @@ public class PlaywrightFactory {
 
     public Properties initProperties() {
 
-        try (FileInputStream fis = new FileInputStream("./src/test/resources/config/config.properties");) {
+        try (FileInputStream fis = new FileInputStream(FrameworkConstants.getConfigproppath());) {
             properties = new Properties();
             properties.load(fis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
