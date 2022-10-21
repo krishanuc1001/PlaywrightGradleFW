@@ -4,9 +4,9 @@ plugins {
     id "io.qameta.allure" version "${allureVersion}"
 }
 
-defaultTasks 'clean', 'test', 'aggregate'
+defaultTasks 'clean', 'test'
 
-group 'org.example'
+group 'org.playwright.automation'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -45,28 +45,26 @@ dependencies {
     testRuntimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
 }
 
-test { //this is the gradle task to be executed
+test {//this is the gradle task to be executed
+
     useTestNG() { //Tells Gradle to use TestNG
 
-        listeners << 'com.testUtilities.listeners.ExtentReportListener'
-        listeners << 'com.testUtilities.listeners.AllureReportListener'
-        listeners << 'com.testUtilities.listeners.AnnotationTransformer'
+//        listeners << 'com.testUtilities.listeners.ExtentReportListener'
+//        listeners << 'com.testUtilities.listeners.AllureReportListener'
+//        listeners << 'com.testUtilities.listeners.AnnotationTransformer'
 
-        if (project.hasProperty('groups')) {
-            includeGroups((String) project.findProperty('groups'))
-            excludeGroups 'flaky', 'oos'
-        }
-
-        options {
-            setParallel('methods')
-            setThreadCount(3)
-        }
+//        if (project.hasProperty('groups')) {
+//            includeGroups((String) project.findProperty('groups'))
+//            excludeGroups 'flaky', 'oos'
+//        }
+//
+//        options {
+//            setParallel('methods')
+//            setThreadCount(2)
+//        }
 
         suites 'src/test/resources/testRunners/testng.xml'
-        //  includeGroups 'test', 'sanity'
-        //  excludeGroups 'requests'
 
-        //set TestNG output dir
         outputDirectory = file("$projectDir/testNGOutput")
 
     }
@@ -76,9 +74,9 @@ test { //this is the gradle task to be executed
         events "PASSED", "FAILED", "SKIPPED"
     }
 
-    finalizedBy {
-        allureReport
-    }
+//    finalizedBy {
+//        allureReport
+//    }
 }
 
 /**
@@ -86,8 +84,8 @@ test { //this is the gradle task to be executed
  * execution in the system default browser.
  * Comment/ uncomment as per requirement when running locally.
  */
-allureReport {
-    finalizedBy {
-        allureServe
-    }
-}
+//allureReport {
+//    finalizedBy {
+//        allureServe
+//    }
+//}
