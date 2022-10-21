@@ -16,6 +16,7 @@ public final class FrameworkConstants {
     private static final String CONFIGJSONPATH = PATHTORESOURCES + "/jsons/config.json";
     private static final String EXCELPATH = System.getProperty("user.dir") + "/excel/SampleTestDataWorkbook.xlsx";
     private static final String EXTENTREPORFOLDERTPATH = System.getProperty("user.dir") + "/ExtentReport-output/";
+    private static final String SCREENSHOTFOLDERPATH = System.getProperty("user.dir") + "/Screenshots/";
     private static final String RUNMANAGERSHEET = "RUNMANAGER";
     private static final String DATASHEET = "DATA";
     private static final String HOME_PAGE_TITLE = "Your Store";
@@ -69,6 +70,10 @@ public final class FrameworkConstants {
 
     public static String getActualLoginPageTitle() {
         return LOGIN_PAGE_TITLE;
+    }
+
+    public static String getScreenshotFolderPath() {
+        return SCREENSHOTFOLDERPATH;
     }
 
 }
