@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PlaywrightPoCGSuite" thread-count="3" parallel="tests" verbose="4">
+<suite name="PlaywrightPoCGSuite" thread-count="4" parallel="tests" verbose="4">
 
     <listeners>
         <listener class-name="com.testUtilities.listeners.ExtentReportListener"></listener>
-        <listener class-name="com.testUtilities.listeners.AllureReportListener"></listener>
+        <!--        <listener class-name="com.testUtilities.listeners.AllureReportListener"></listener>-->
     </listeners>
 
-    <test verbose="2" name="Home Page Tests">
+    <test verbose="2" name="Home Page Tests_Chrome">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.tests.HomePageTest"/>
         </classes>
     </test>
 
-    <test verbose="2" name="Login Page Tests">
+    <test verbose="2" name="Login Page Tests_Edge">
+        <parameter name="browser" value="msedge"/>
+        <classes>
+            <class name="com.tests.LoginPageTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" name="Home Page Tests_Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.tests.HomePageTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" name="Login Page Tests_Chromium">
+        <parameter name="browser" value="chromium"/>
         <classes>
             <class name="com.tests.LoginPageTest"/>
         </classes>
