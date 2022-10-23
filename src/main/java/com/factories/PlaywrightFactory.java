@@ -53,7 +53,7 @@ public class PlaywrightFactory {
                 tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false)));
                 break;
             case "msedge":
-                tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(false)));
+                tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(true)));
                 break;
             case "firefox":
                 tlBrowser.set(getPlaywright().firefox().launch(new BrowserType.LaunchOptions().setHeadless(false)));
@@ -85,6 +85,13 @@ public class PlaywrightFactory {
 
         return properties;
 
+    }
+
+    public void removeThreadLocal() {
+        tlPage.remove();
+        tlBrowserContext.remove();
+        tlBrowser.remove();
+        tlPlaywright.remove();
     }
 
 }
