@@ -3,9 +3,7 @@ package com.base;
 import com.factories.PlaywrightFactory;
 import com.microsoft.playwright.Page;
 import com.pages.HomePage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.util.Properties;
 
@@ -18,7 +16,7 @@ public class BaseTest {
     protected HomePage homePage;
 
     @Parameters({"browser"})
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void setUp(String browserName) {
         playwrightFactory = new PlaywrightFactory();
         properties = playwrightFactory.initProperties();
@@ -31,7 +29,7 @@ public class BaseTest {
         homePage = new HomePage(page);
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void tearDown() {
         page.context().browser().close();
     }
