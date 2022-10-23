@@ -83,19 +83,21 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     public synchronized void onTestSuccess(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " passed!"));
-        extentTest.get().pass("Test passed");
+        extentTest.get().pass("<<========== Test passed ==========>>");
         extentTest.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
     public synchronized void onTestFailure(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " failed!"));
+        extentTest.get().fail("<<========== Test failed ==========>>");
         extentTest.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " skipped!"));
+        extentTest.get().skip("<<========== Test skipped ==========>>");
         extentTest.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
