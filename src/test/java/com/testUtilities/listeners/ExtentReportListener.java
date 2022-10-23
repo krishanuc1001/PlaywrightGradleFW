@@ -5,7 +5,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.constants.FrameworkConstants;
-import org.testng.ITestContext;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
@@ -21,7 +22,7 @@ import java.util.Objects;
 
 import static com.utils.ScreenshotUtils.takeScreenshot;
 
-public class ExtentReportListener implements ITestListener {
+public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     static String extentReportFolderPath = FrameworkConstants.getExtentReportFolderPath();
     static String extentReportFilePath = FrameworkConstants.getExtentReportFilePath();
@@ -52,12 +53,12 @@ public class ExtentReportListener implements ITestListener {
     }
 
     @Override
-    public synchronized void onStart(ITestContext context) {
+    public synchronized void onStart(ISuite suite) {
         System.out.println("<<============ TEST SUITE EXECUTION STARTED ==============>>");
     }
 
     @Override
-    public synchronized void onFinish(ITestContext context) {
+    public synchronized void onFinish(ISuite suite) {
         flushReport();
         System.out.println("<<============ TEST SUITE EXECUTION FINISHED ==============>>");
     }
@@ -75,10 +76,6 @@ public class ExtentReportListener implements ITestListener {
                 result.getMethod().getDescription());
 
         test.assignCategory(result.getTestContext().getSuite().getName());
-        /*
-         * methodName = StringUtils.capitalize(StringUtils.join(StringUtils.
-         * splitByCharacterTypeCamelCase(methodName), StringUtils.SPACE));
-         */
         test.assignCategory(className);
         extentTest.set(test);
         extentTest.get().getModel().setStartTime(getTime(result.getStartMillis()));
@@ -119,9 +116,7 @@ public class ExtentReportListener implements ITestListener {
             extentTest.remove();
 
             if (Desktop.isDesktopSupported()) {
-                // Opens the report file in the desktop default browser
                 try {
-
                     Desktop.getDesktop().browse(new File(extentReportFilePath).toURI());
                 } catch (Exception e) {
                     e.printStackTrace();
