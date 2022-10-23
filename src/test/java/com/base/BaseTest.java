@@ -38,6 +38,7 @@ public class BaseTest {
 
     @AfterTest(alwaysRun = true)
     public void tearDown() {
+        playwrightFactory.removeThreadLocal();
         page.context().browser().close();
     }
 
