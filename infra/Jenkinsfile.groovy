@@ -34,8 +34,15 @@ pipeline
                         stage('Test') {
                             steps {
                                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                                    git 'https://github.com/krishanuc1001/PlaywrightGradleFW'
-                                    sh "./gradlew clean test --info"
+                                    // Checkout git repo
+                                    git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
+
+                                    // Removing existing docker containers
+                                    sh "docker-compose down || true"
+                                    sh "docker rm -f selenium-hub-pw || true"
+
+                                    // Run test
+                                    sh "docker-compose run --name=playwright-gradle-framework clean test --info"
                                 }
                             }
                         }
