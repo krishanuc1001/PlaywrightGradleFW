@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.constants.FrameworkConstants;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
@@ -91,14 +92,16 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
     public synchronized void onTestFailure(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " failed!"));
         extentTest.get().fail("<<========== Test failed ==========>>");
-        extentTest.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
+        extentTest.get().fail(ExceptionUtils.getStackTrace(result.getThrowable()).replaceAll("\n", "<br />"),
+                MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " skipped!"));
         extentTest.get().skip("<<========== Test skipped ==========>>");
-        extentTest.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
+        extentTest.get().skip(ExceptionUtils.getStackTrace(result.getThrowable()).replaceAll("\n", "<br />"),
+                MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
