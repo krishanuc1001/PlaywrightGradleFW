@@ -33,7 +33,7 @@ pipeline
 
                         stage('Test') {
                             steps {
-                                git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
+                                git branch: 'main', url: 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
                                 sh "./gradlew clean test --info"
 
 //                                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
