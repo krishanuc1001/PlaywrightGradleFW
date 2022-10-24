@@ -36,14 +36,15 @@ pipeline
                                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                                     // Checkout git repo
                                     git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
-                                    sh "git checkout main"
+//                                    sh "git checkout main"
 
                                     // Removing existing docker containers
-                                    sh "docker-compose down || true"
-                                    sh "docker rm -f selenium-hub-pw || true"
+//                                    sh "docker-compose down || true"
+//                                    sh "docker rm -f selenium-hub-pw || true"
 
                                     // Run test
-                                    sh "docker-compose run --name=playwright-gradle-framework clean test --info"
+//                                    sh "docker-compose run --name=playwright-gradle-framework clean test --info"
+                                    sh "./gradlew clean test --info"
                                 }
                             }
                         }
