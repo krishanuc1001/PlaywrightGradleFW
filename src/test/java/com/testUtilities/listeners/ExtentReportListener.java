@@ -83,23 +83,23 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
     }
 
     public synchronized void onTestSuccess(ITestResult result) {
-        System.out.println((result.getMethod().getMethodName() + " passed!"));
-        extentTest.get().pass("<<========== Test passed ==========>>");
+        System.out.println((result.getMethod().getMethodName() + " ======> passed"));
+        extentTest.get().pass(result.getMethod().getMethodName() + " ======> passed");
         extentTest.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
     public synchronized void onTestFailure(ITestResult result) {
-        System.out.println((result.getMethod().getMethodName() + " failed!"));
-        extentTest.get().fail("<<========== Test failed ==========>>");
+        System.out.println((result.getMethod().getMethodName() + " ======> failed"));
+        extentTest.get().fail(result.getMethod().getMethodName() + " ======> failed");
         extentTest.get().fail(ExceptionUtils.getStackTrace(result.getThrowable()).replaceAll("\n", "<br />"),
                 MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
-        System.out.println((result.getMethod().getMethodName() + " skipped!"));
-        extentTest.get().skip("<<========== Test skipped ==========>>");
+        System.out.println((result.getMethod().getMethodName() + " ======> skipped"));
+        extentTest.get().skip(result.getMethod().getMethodName() + " ======> skipped");
         extentTest.get().skip(ExceptionUtils.getStackTrace(result.getThrowable()).replaceAll("\n", "<br />"),
                 MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
         extentTest.get().getModel().setEndTime(getTime(result.getEndMillis()));
