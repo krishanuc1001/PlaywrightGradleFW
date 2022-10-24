@@ -33,10 +33,9 @@ pipeline
 
                         stage('Test') {
                             steps {
-                                script {
-                                    git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
-                                    sh "./gradlew clean test --info"
-                                }
+                                git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
+                                sh "./gradlew clean test --info"
+
 //                                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                                 // Checkout git repo
 //                                    git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
