@@ -36,6 +36,7 @@ pipeline
                                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                                     // Checkout git repo
                                     git 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
+                                    sh "git checkout main"
 
                                     // Removing existing docker containers
                                     sh "docker-compose down || true"
