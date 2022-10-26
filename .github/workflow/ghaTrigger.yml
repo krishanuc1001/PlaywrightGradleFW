@@ -1,0 +1,8 @@
+# This is a sample workflow to trigger Github actions workflow
+
+name: nightly-trigger-workflow
+
+on:
+  push:
+     branches:
+     - main
