@@ -1,8 +1,15 @@
-# This is a sample workflow to trigger Github actions workflow
-
+# This is a sample workflow to trigger GitHub actions workflow
 name: nightly-trigger-workflow
 
 on:
   push:
-     branches:
-     - main
+    branches:
+      - main
+      - 'releases/**'
+    branches-ignore:
+      - develop
+
+  pull-request:
+    types: [ opened, synchronize, ]
+
+
