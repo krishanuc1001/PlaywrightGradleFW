@@ -10,6 +10,17 @@ on:
       - develop
 
   pull-request:
-    types: [ opened, synchronize, ]
+    types: [ opened, synchronize ]
 
+  issues:
+    types:
+      - opened
+      - labeled
+
+  # Workflow can be triggered both manually and automatically
+  workflow_dispatch:
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
 
