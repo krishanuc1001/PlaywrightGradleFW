@@ -1,0 +1,41 @@
+name: context demo
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: 'Please enter the word you want to print'
+        default: 'Hello'
+        required: true
+        type: string
+
+env:
+  firstName: 'Krishanu'
+  website: 'Krishanu LinkedIn'
+
+jobs:
+  contexts-demo:
+    timeout-minutes: 5
+    continue-on-error: false
+    container:
+      image: alpine:latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    steps:
+      - run: echo ${{ inputs.text }}
+      - run: echo ${{ github.event.inputs.text }}
+      - run: echo ${{ github.actor }}
+      - run: echo 'Hi ${{ env.firstName }}'
+      - run: echo 'website - ${{ env.website }}'
+      - run: echo ${{ job.status}}
+      - run: echo ${{ runner.os}}
+      - run: echo ${{ secrets.PASSWORD }} ${{ env.firstName }}
+        env:
+          firstName: 'Krish'
+
+  contexts-demo-2:
+    needs: [ contexts-demo ]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Running contexts-demo-2 after finishing contexts-demo'

@@ -17,7 +17,7 @@ on:
       - opened
       - labeled
 
-  # Workflow can be triggered both manually and automatically
+  # Workflow can be triggered both manually
   workflow_dispatch:
 
 on:
