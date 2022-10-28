@@ -41,7 +41,7 @@ pipeline
                         stage('Publish Extent Report') {
                             steps {
                                 publishHTML([allowMissing         : false,
-                                             alwaysLinkToLastBuild: false,
+                                             alwaysLinkToLastBuild: true,
                                              keepAll              : true,
                                              reportDir            : 'ExtentReport-output',
                                              reportFiles          : '**/*.html',
