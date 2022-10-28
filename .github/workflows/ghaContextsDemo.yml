@@ -13,7 +13,7 @@ env:
   website: 'Krishanu LinkedIn'
 
 jobs:
-  contexts-demo:
+  job1:
     timeout-minutes: 5
     continue-on-error: false
     container:
@@ -34,7 +34,7 @@ jobs:
         env:
           firstName: 'Krish'
 
-  contexts-demo-2:
+  job2:
     needs: [ contexts-demo ]
     runs-on: ubuntu-latest
     steps:
