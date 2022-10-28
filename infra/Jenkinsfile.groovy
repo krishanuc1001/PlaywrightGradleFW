@@ -42,7 +42,7 @@ pipeline
                             steps {
                                 publishHTML([allowMissing         : true,
                                              alwaysLinkToLastBuild: true,
-                                             keepAll              : false,
+                                             keepAll              : true,
                                              reportDir            : 'ExtentReport-output',
                                              reportFiles          : '**/*.html',
                                              reportName           : 'Extent Report',
