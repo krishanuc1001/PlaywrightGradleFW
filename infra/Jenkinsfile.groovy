@@ -39,14 +39,16 @@ pipeline
                         }
 
                         stage('Publish Extent Report') {
-                            steps {
-                                publishHTML([allowMissing         : true,
-                                             alwaysLinkToLastBuild: true,
-                                             keepAll              : true,
-                                             reportDir            : 'ExtentReport-output',
-                                             reportFiles          : '**/*.html',
-                                             reportName           : 'Extent Report',
-                                             reportTitles         : 'Extent Report'])
+                            post {
+                                always {
+                                    publishHTML([allowMissing         : true,
+                                                 alwaysLinkToLastBuild: true,
+                                                 keepAll              : true,
+                                                 reportDir            : 'ExtentReport-output',
+                                                 reportFiles          : '**/*.html',
+                                                 reportName           : 'Extent Report',
+                                                 reportTitles         : 'Extent Report'])
+                                }
                             }
                         }
 
