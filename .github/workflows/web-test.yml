@@ -1,6 +1,11 @@
 name: Run Playwright tests using GitHub actions
 
-on: workflow_dispatch # 1. Choose the trigger
+on: # 1. Choose the trigger
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
   Run-Playwright-web-tests:
