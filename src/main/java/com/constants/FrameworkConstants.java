@@ -33,7 +33,7 @@ public final class FrameworkConstants {
 
     public static String createReportPath() {
         if (PropertiesUtils.get(ConfigPropertiesEnum.OVERRIDEREPORTS).equalsIgnoreCase("no")) {
-            return EXTENTREPORFOLDERTPATH + new SimpleDateFormat("dd_MM_yyyy").format(new Date()) + "_ExtentReport.html";
+            return EXTENTREPORFOLDERTPATH + new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date()) + "_ExtentReport.html";
         } else {
             return EXTENTREPORFOLDERTPATH + "ExtentReport.html";
         }
