@@ -1,0 +1,31 @@
+name: Run Playwright tests using GitHub actions
+
+on: workflow_dispatch # 1. Choose the trigger
+
+jobs:
+  Run Playwright web tests:
+    runs-on: ubuntu-latest # 2. Choose the runner
+
+    steps:
+      - name: Checkout repository into the runner
+        uses: actions/checkout@v3 # 3. Checkout git repo
+
+      - name: Set up Java
+        uses: actions/setup-java@v3 # 4. Set up Java in runner
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up Selenoid Container
+        uses: n-ton4/selenoid-github-action@master # 5. Set up and start Selenoid inside container
+        id: start-selenoid
+        continue-on-error: false
+        with:
+          version: 1.10.1
+          args: -limit 10
+          browsers: chrome
+          last-versions: 1
+
+      - name: Run tests
+        run:
+          ./gradlew clean test --info # 6. Run tests
