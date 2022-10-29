@@ -3,7 +3,7 @@ name: Run Playwright tests using GitHub actions
 on: workflow_dispatch # 1. Choose the trigger
 
 jobs:
-  Run Playwright web tests:
+  Run-Playwright-web-tests:
     runs-on: ubuntu-latest # 2. Choose the runner
 
     steps:
