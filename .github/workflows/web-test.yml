@@ -34,8 +34,12 @@ jobs:
       - name: Run tests
         run: |
           ./gradlew clean test --info # 6. Run tests
-          ls -lq
-          ls -lq ExtentReport-output
+          mkdir github-pages-dir
+          cd ExtentReport-output
+          mkdir extent-report
+          mv *.html extent-report/index.html
+          cd ..
+          mv ExtentReport-output/* github-pages-dir
 
       - name: Deploy report to Github Pages
         if: always()
@@ -43,4 +47,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ExtentReport-output
+          PUBLISH_DIR: github-pages-dir
