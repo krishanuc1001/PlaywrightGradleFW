@@ -41,9 +41,8 @@ pipeline
 
                         stage('Test') {
                             steps {
-                                sh "docker stop selenium-hub-pw || true"
-                                sh "docker rm -f selenium-hub-pw || true"
-                                sh "docker-compose down || true"
+//                                sh "docker stop selenium-hub-pw || true"
+//                                sh "docker rm -f selenium-hub-pw || true"
                                 sh "docker-compose up -d"
 //                                git branch: 'main', url: 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
                                 sh "./gradlew clean test --info"
@@ -68,6 +67,7 @@ pipeline
                         stage('Publish Extent Report') {
                             steps {
                                 echo "Success !!! Extent report published..."
+                                sh "docker-compose down || true"
 //                                jenkinsHelper.publishHTMLUIReports()
                             }
                         }
