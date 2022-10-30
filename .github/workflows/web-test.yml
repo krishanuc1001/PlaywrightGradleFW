@@ -34,6 +34,8 @@ jobs:
       - name: Run tests
         run:
           ./gradlew clean test --info # 6. Run tests
+          ls -lq
+          ls -lq ExtentReport-output
 
       - name: Deploy report to Github Pages
         if: always()
