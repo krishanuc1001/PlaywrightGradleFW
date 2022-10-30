@@ -60,10 +60,10 @@ pipeline
                         }
 
                         stage('Publish Extent Report') {
-                            echo "Success !!! Extent report published..."
-//                            steps {
+                            steps {
+                                echo "Success !!! Extent report published..."
 //                                jenkinsHelper.publishHTMLUIReports()
-//                            }
+                            }
                         }
 
                     }
