@@ -32,7 +32,7 @@ jobs:
           last-versions: 1
 
       - name: Run tests
-        run:
+        run: |
           ./gradlew clean test --info # 6. Run tests
           ls -lq
           ls -lq ExtentReport-output
