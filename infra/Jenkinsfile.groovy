@@ -1,5 +1,3 @@
-def jenkinsHelper = new JenkinsHelper()
-
 pipeline {
     agent any
 
@@ -44,10 +42,8 @@ pipeline {
 
                 stage('Test') {
                     steps {
-//                                sh "docker stop selenium-hub-pw || true"
-//                                sh "docker rm -f selenium-hub-pw || true"
+                        sh "docker-compose down || true"
                         sh "docker-compose up -d"
-//                                git branch: 'main', url: 'https://github.com/krishanuc1001/PlaywrightGradleFW.git'
                         sh "./gradlew clean test --info"
                     }
 
@@ -61,35 +57,18 @@ pipeline {
                                              reportFiles          : '**/*.html',
                                              reportName           : 'Extent Report',
                                              reportTitles         : 'Extent Report'])
+                                echo "Success !!! Extent report published..."
                             }
                         }
                     }
 
                 }
 
-                stage('Publish Extent Report') {
+                stage('Tear Down') {
                     steps {
-                        echo "Success !!! Extent report published..."
                         sh "docker-compose down || true"
-//                                jenkinsHelper.publishHTMLUIReports()
                     }
                 }
 
             }
-}
-
-
-class JenkinsHelper {
-
-    def steps
-
-    def publishHTMLUIReports() {
-        steps.publishHTML([allowMissing         : true,
-                           alwaysLinkToLastBuild: true,
-                           keepAll              : true,
-                           reportDir            : 'ExtentReport-output',
-                           reportFiles          : '**/*.html',
-                           reportName           : 'Extent Report',
-                           reportTitles         : 'Extent Report'])
-    }
 }
