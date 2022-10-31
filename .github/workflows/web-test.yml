@@ -20,6 +20,17 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 7.4.2
+          cache-disabled: false
+
+      - name: Save Docker images cache
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
 
       - name: Set up Selenoid Container
         uses: n-ton4/selenoid-github-action@master # 5. Set up and start Selenoid inside container
