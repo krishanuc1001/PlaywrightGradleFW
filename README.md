@@ -24,7 +24,7 @@ Dockerization => Colima v0.4.6 (For Mac)
 ```
 
 ```zsh
-Development IDE => IntelliJ Ultimate 2021.2.3
+Development IDE => IntelliJ IDEA 2022.2.3 (Ultimate Edition)
 ```
 
 ### Browsers supported:
