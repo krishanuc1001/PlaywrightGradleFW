@@ -128,9 +128,9 @@ build/reports/dependencyUpdates/report.html
 After the execution is completed, an `Extent report` is generated that opens automatically in the machines default
 browser.
 
-The`Extent report` is also published to the following `GitHub Page`:
+The`Extent report` will also published to the following `GitHub Page`:
 ```zsh
-https://krishanuc1001.github.io/PlaywrightGradleFW/extent-report/
+https://<username>.github.io/PlaywrightGradleFW/extent-report/
 ```
 
 ## CI-CD
