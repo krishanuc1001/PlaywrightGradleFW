@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://www.owasp.org/index.php/OWASP_Dependency_Check_Suppression">
+    <suppress>
+        <notes>No stable candidate available yet for Jackson Databind as of Oct 5, 2022</notes>
+        <cve>CVE-2022-42003</cve>
+    </suppress>
+    <suppress>
+        <notes>Test automation dependency vulnerabilities</notes>
+        <cve>CVE-2022-42004</cve>
+        <cve>CVE-2022-2048</cve>
+        <cve>CVE-2021-0341</cve>
+        <cve>CVE-2022-25857</cve>
+        <cve>CVE-2021-37136</cve>
+        <cve>CVE-2021-37137</cve>
+    </suppress>
+</suppressions>
+
