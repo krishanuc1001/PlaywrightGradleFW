@@ -63,6 +63,21 @@ git clone https://github.com/krishanuc1001/PlaywrightGradleFW.git
 File -> Open... -> Browse to the cloned Project repo -> Import the project by selecting build.gradle file
 ```
 
+## Colima Set-up on Mac
+
+Install Colima
+
+```zsh
+brew install docker docker-compose colima
+```
+
+Command to start Colima
+
+```zsh
+colima start --cpu 4 --memory 8
+```
+
+
 ## Running the tests
 
 Run command =>
