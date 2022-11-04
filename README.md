@@ -111,6 +111,8 @@ Path:
 build/reports/dependency-check-report.html
 ```
 
+![img_3.png](img_3.png)
+
 To check the latest version for dependencies, run
 
 ```zsh
@@ -123,6 +125,8 @@ Path:
 build/reports/dependencyUpdates/report.html
 ```
 
+![img_4.png](img_4.png)
+
 ## Reporting
 
 After the execution is completed, an `Extent report` is generated that opens automatically in the machines default
@@ -132,6 +136,12 @@ The`Extent report` will also published to the following `GitHub Page`:
 ```zsh
 https://<username>.github.io/PlaywrightGradleFW/extent-report/
 ```
+
+![img.png](img.png)
+
+![img_1.png](img_1.png)
+
+![img_2.png](img_2.png)
 
 ## CI-CD
 
