@@ -154,7 +154,9 @@ https://<username>.github.io/PlaywrightGradleFW/extent-report/
 
 ![img.png](img.png)
 
+
 ![img_1.png](img_1.png)
+
 
 ![img_2.png](img_2.png)
 
@@ -163,3 +165,8 @@ https://<username>.github.io/PlaywrightGradleFW/extent-report/
 The repository comes with ready-to-use `Jenkins` and `GitHub actions` integration.
 
 Please go through the sample `infra/Jenkinsfile.groovy` and `.github/workflows/web-test.yml` for more details.
+
+![img_5.png](img_5.png)
+
+
+![img_6.png](img_6.png)
