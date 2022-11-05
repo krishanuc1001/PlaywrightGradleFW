@@ -152,13 +152,13 @@ The`Extent report` will also published to the following `GitHub Page`:
 https://<username>.github.io/PlaywrightGradleFW/extent-report/
 ```
 
-![img.png](IdeaProjects/PlaywrightPoCGradle/img.png)
+![img.png](img.png)
 
 
-![img_1.png](IdeaProjects/PlaywrightPoCGradle/img_1.png)
+![img_1.png](img_1.png)
 
 
-![img_2.png](IdeaProjects/PlaywrightPoCGradle/img_2.png)
+![img_2.png](img_2.png)
 
 ## CI-CD
 
@@ -166,7 +166,7 @@ The repository comes with ready-to-use `Jenkins` and `GitHub actions` integratio
 
 Please go through the sample `infra/Jenkinsfile.groovy` and `.github/workflows/web-test.yml` for more details.
 
-![img_5.png](IdeaProjects/PlaywrightPoCGradle/img_5.png)
+![img_5.png](img_5.png)
 
 
-![img_6.png](IdeaProjects/PlaywrightPoCGradle/img_6.png)
+![img_6.png](img_6.png)
