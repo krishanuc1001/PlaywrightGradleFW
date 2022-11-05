@@ -1,6 +1,5 @@
-package com.customExceptions;
+package com.customexceptions;
 
-@SuppressWarnings("serial")
 public class InvalidPathForFilesException extends FrameworkExceptions {
 
 	public InvalidPathForFilesException(String message) {

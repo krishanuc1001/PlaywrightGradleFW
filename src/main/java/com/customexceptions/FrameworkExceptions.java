@@ -1,6 +1,5 @@
-package com.customExceptions;
+package com.customexceptions;
 
-@SuppressWarnings("serial")
 public class FrameworkExceptions extends RuntimeException {
 
 	public FrameworkExceptions(String message) {

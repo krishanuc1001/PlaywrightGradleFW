@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import com.constants.FrameworkConstants;
 import com.enums.ConfigPropertiesEnum;
-import com.customExceptions.PropertyFileException;
+import com.customexceptions.PropertyFileException;
 
 /**
  * Reading the property file and store it in a HashMap for faster processing

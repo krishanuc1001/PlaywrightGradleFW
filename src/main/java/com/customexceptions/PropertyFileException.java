@@ -1,6 +1,5 @@
-package com.customExceptions;
+package com.customexceptions;
 
-@SuppressWarnings("serial")
 public class PropertyFileException extends FrameworkExceptions {
 
 	public PropertyFileException(String message) {
