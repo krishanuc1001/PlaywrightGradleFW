@@ -10,8 +10,8 @@ on: # 1. Choose the trigger
 jobs:
   Run-Playwright-web-tests:
     runs-on: ubuntu-latest # 2. Choose the runner
-#    container:
-#      image: mcr.microsoft.com/playwright:v1.27.1-focal
+    container:
+      image: mcr.microsoft.com/playwright:v1.27.1-focal
 
     steps:
       - name: Checkout repository into the runner
@@ -23,16 +23,16 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build & Install
-        run: mvn -B install -D skipTests --no-transfer-progress
+#      - name: Build & Install
+#        run: mvn -B install -D skipTests --no-transfer-progress
+#
+#      - name: Install Playwright
+#        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
 
-      - name: Install Playwright
-        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: 7.4.2
+#      - name: Setup Gradle
+#        uses: gradle/gradle-build-action@v2
+#        with:
+#          gradle-version: 7.4.2
 
       # Cache Gradle dependencies
       - name: Setup Gradle Dependencies Cache
