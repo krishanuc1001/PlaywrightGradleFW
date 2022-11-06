@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v3 # 4. Set up Java in runner
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '11'
 
 #      - name: Build & Install
 #        run: mvn -B install -D skipTests --no-transfer-progress
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 7.1
+          gradle-version: 7.4.2
 
       # Cache Gradle dependencies
       - name: Setup Gradle Dependencies Cache
