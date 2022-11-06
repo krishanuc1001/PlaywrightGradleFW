@@ -1,6 +1,6 @@
 pipeline {
-    agent{
-        docker{
+    agent {
+        docker {
             image 'mcr.microsoft.com/playwright:v1.27.1-focal'
         }
     }
@@ -9,9 +9,9 @@ pipeline {
         maven 'maven'
     }
 
-    environment {
-        PATH = "$PATH:/usr/local/bin"
-    }
+//    environment {
+//        PATH = "$PATH:/usr/local/bin"
+//    }
 
     stages
             {
@@ -37,6 +37,15 @@ pipeline {
                         echo "Success"
                     }
                 }
+
+//                stage('Install playwright') {
+//                    steps {
+//                        sh '''
+//                              npm i -D @playwright/test
+//                              npx playwright install
+//                            '''
+//                    }
+//                }
 
                 stage("Checkout Test f/w repo") {
                     steps {
