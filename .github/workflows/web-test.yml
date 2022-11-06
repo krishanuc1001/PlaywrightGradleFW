@@ -10,8 +10,8 @@ on: # 1. Choose the trigger
 jobs:
   Run-Playwright-web-tests:
     runs-on: ubuntu-latest # 2. Choose the runner
-    container:
-      image: mcr.microsoft.com/playwright:v1.27.1-focal
+#    container:
+#      image: mcr.microsoft.com/playwright:v1.27.1-focal
 
     steps:
       - name: Checkout repository into the runner
