@@ -46,7 +46,7 @@ Firefox
 ```
 
 ```zsh
-Safari
+Webkit (Safari)
 ```
 
 ## Cloning & Importing the Project
@@ -126,7 +126,7 @@ Path:
 build/reports/dependency-check-report.html
 ```
 
-![img_3.png](IdeaProjects/PlaywrightPoCGradle/img_3.png)
+![img_3.png](img_3.png)
 
 To check the latest version for dependencies, run
 
@@ -140,7 +140,7 @@ Path:
 build/reports/dependencyUpdates/report.html
 ```
 
-![img_4.png](IdeaProjects/PlaywrightPoCGradle/img_4.png)
+![img_4.png](img_4.png)
 
 ## Reporting
 
