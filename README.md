@@ -80,6 +80,10 @@ colima start --cpu 4 --memory 8
 
 ## Running the tests
 
+### Pre-requisite
+
+Firstly, make sure that Docker is running locally either via Colima or Docker desktop
+
 Run command =>
 
 ```zsh

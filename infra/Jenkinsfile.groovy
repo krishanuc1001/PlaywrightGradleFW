@@ -10,9 +10,9 @@ pipeline {
         maven 'maven'
     }
 
-//    environment {
-//        PATH = "$PATH:/usr/local/bin"
-//    }
+    environment {
+        PATH = "$PATH:/usr/local/bin"
+    }
 
     stages
             {
