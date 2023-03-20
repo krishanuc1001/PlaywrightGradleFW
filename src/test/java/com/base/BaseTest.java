@@ -19,7 +19,6 @@ public class BaseTest {
     PlaywrightFactory playwrightFactory;
     protected Page page;
     protected Properties properties;
-
     protected HomePage homePage;
 
     @Parameters({"browser"})
