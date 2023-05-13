@@ -130,7 +130,7 @@ Path:
 build/reports/dependency-check-report.html
 ```
 
-![img_3.png](img_3.png)
+![img_3](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/33585234-6b69-4894-a595-0be83fffbcfb)
 
 To check the latest version for dependencies, run
 
@@ -144,7 +144,7 @@ Path:
 build/reports/dependencyUpdates/report.html
 ```
 
-![img_4.png](img_4.png)
+![img_4](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/34d598d6-332c-4025-8c78-572d5678d346)
 
 ## Reporting
 
@@ -156,13 +156,12 @@ The`Extent report` will also published to the following `GitHub Page`:
 https://<username>.github.io/PlaywrightGradleFW/extent-report/
 ```
 
-![img.png](img.png)
+![img](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/f62e1388-6c8c-4109-b25e-5e930bd57863)
 
+![img_1](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/c5ff23d7-cfe9-42a7-8635-eac7a5593562)
 
-![img_1.png](img_1.png)
+![img_2](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/25dd91b7-53f9-4d9a-b0f4-05d06fbd722b)
 
-
-![img_2.png](img_2.png)
 
 ## CI-CD
 
@@ -170,7 +169,6 @@ The repository comes with ready-to-use `Jenkins` and `GitHub actions` integratio
 
 Please go through the sample `infra/Jenkinsfile.groovy` and `.github/workflows/web-test.yml` for more details.
 
-![img_5.png](img_5.png)
+![img_5](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/6c0d1cb4-e743-499f-bdff-57123f9d7958)
 
-
-![img_6.png](img_6.png)
+![img_6](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/3dc9a0e5-1f08-49e5-a91f-cce8cd802b73)
