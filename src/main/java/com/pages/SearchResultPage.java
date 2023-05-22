@@ -4,16 +4,15 @@ import com.microsoft.playwright.Page;
 
 public class SearchResultPage {
 
-    private Page page;
+  private Page page;
 
-    public SearchResultPage(Page page) {
-        this.page = page;
-    }
+  public SearchResultPage(Page page) {
+    this.page = page;
+  }
 
-    private String searchPageHeader = "div#content h1";
+  private String searchPageHeader = "div#content h1";
 
-    public String getSearchPageHeader() {
-        return page.textContent(searchPageHeader);
-    }
-
+  public String getSearchPageHeader() {
+    return page.textContent(searchPageHeader);
+  }
 }
