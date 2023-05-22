@@ -1,4 +1,4 @@
-name: Format
+name: Java Code Format
 
 on:
   push:
