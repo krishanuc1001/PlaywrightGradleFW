@@ -146,6 +146,95 @@ build/reports/dependencyUpdates/report.html
 
 ![img_4](https://github.com/krishanuc1001/PlaywrightGradleFW/assets/40739038/34d598d6-332c-4025-8c78-572d5678d346)
 
+## Steps to Format Code (One-time set up)
+
+### Step 1
+
+- Install [pre-commit](https://pre-commit.com/) which is a package manager for installing pre-commit hooks.
+
+> NOTE: This particular step is already done and is only here for your information. No action is required from new users,
+since Hook file is already copied in the project. Adding this step here since it is good to know how this was done and so that if needed in future one can add (new) hooks here.
+
+- Search for the pre commit hook you are interested in from the list of [available hooks](https://pre-commit.com/hooks.html).
+- If you search with word "java" in the search window of above webpage, you will find (at least) 3 different pre commit hooks.
+- All of these hooks use [Google Java Format program](https://github.com/google/google-java-format) that reformats Java source code to comply with [Google's Java codestyle](https://google.github.io/styleguide/javaguide.html).
+- The hook we have chosen for our project is named `pretty-format-java` from user [macisamuele - on Github](https://github.com/macisamuele/language-formatters-pre-commit-hooks).
+- Click on the above GitHub URL to go to see how to use this hook. You will see an example as below
+
+```
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: d2425a62376c2197448cce2f825d5a0c3926b862
+  hooks:
+  - id: pretty-format-java
+    args: [ --autofix ]
+```
+
+- Add a file in root of this repository named `.pre-commit-config.yaml` and paste above content in it (already done, added fyi only).
+- Update the latest `rev` (commit `sha`) version (already done, added fyi only. Have a check for the latest commit `sha` from the above git repo).
+- Add any other hooks you are interested in here (as you will see in file `.pre-commit-config.yaml`).
+
+#### Step 2
+
+- Each user need to run below step (Only one time ever for a project repo):
+    - To install the git hook script on your local git repository:
+        - run `pre-commit install` from the root of this repository.
+        - Should give result as below if successful.
+
+            ```bash
+            $ pre-commit install
+            pre-commit installed at .git/hooks/pre-commit
+           ```
+
+#### Step 3
+
+- That's it we are set now!
+- Pre-commit will now run on every commit that we make and our code will be auto-magically formatted as per [Google's Java codestyle](https://google.github.io/styleguide/javaguide.html)
+- If there are any formatting violations, not only it will tell you what the failures are, but it will also fix it for us automatically before commit (of course we would need to add those changes to stage and commit again)
+
+```
+20:52:05.449: [PlaywrightPoCGradle] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false reset -- .github/workflows/format-java-code.yaml
+20:52:05.474: [PlaywrightPoCGradle] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- src/main/java/com/tbd/BadCode.java
+20:52:05.503: [PlaywrightPoCGradle] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /private/var/folders/vb/1zlkz6115mgfttm2tfl1l59w0000gp/T/git-commit-msg-1.txt --
+[WARNING] Unstaged files detected.
+[INFO] Stashing unstaged files to /Users/krish.chakraborty/.cache/pre-commit/patch1687101726-24189.
+check yaml...........................................(no files to check)Skipped
+check json...........................................(no files to check)Skipped
+check xml............................................(no files to check)Skipped
+pretty format json...................................(no files to check)Skipped
+fix end of files.........................................................Passed
+trim trailing whitespace.................................................Passed
+mixed line ending........................................................Passed
+Google Java Formatter....................................................Failed
+- hook id: pretty-format-java
+- exit code: 1
+- files were modified by this hook
+[cwd=/Users/krish.chakraborty/IdeaProjects/PlaywrightPoCGradle] Run command: ('java', '-version')
+[return_code=0] |
+	stderr: openjdk version "17.0.2" 2022-01-18
+OpenJDK Runtime Environment (build 17.0.2+8-86)
+OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
+[cwd=/Users/krish.chakraborty/IdeaProjects/PlaywrightPoCGradle] Run command: ('java', '--add-exports', 'jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED', '--add-exports', 'jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED', '-jar', '/Users/krish.chakraborty/.cache/pre-commit/google-java-formatter1.17.0.jar', '--set-exit-if-changed', '--replace', 'src/main/java/com/tbd/BadCode.java')
+[return_code=1] |
+	stderr:
+[INFO] Restored changes from /Users/krish.chakraborty/.cache/pre-commit/patch1687101726-24189.
+20:52:07.592: [PlaywrightPoCGradle] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- .github/workflows/format-java-code.yaml
+```
+
+#### Step 4 [One-time action to be conducted for the whole project]
+
+When  pre-commit is first introduced in a project it is advised to format all the files at least
+one time to avoid seeing formatting changes going forward. The way we can do this is by running
+the below command in a powershell or a git terminal
+
+> Note: It would not work from intellij or normal terminals.
+
+`java -jar "/Users/krish.chakraborty/.cache/pre-commit/google-java-formatter1.17.0.jar" --replace "$(git ls-files *.java)"`
+
+> Please replace the "krish.chakraborty" user with your user directory where this jar file was downloaded.
+> Once formatted, push all the changes in a PR, and we can be assured that we do not have to see any formatting related
+> issues anymore in our project PRs.
+
+
 ## Reporting
 
 After the execution is completed, an `Extent report` is generated that opens automatically in the machines default
