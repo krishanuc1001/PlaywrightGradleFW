@@ -4,10 +4,6 @@ on:
   push:
     branches: [ main ]
 
-#  pull_request:
-#    branches:
-#      - "main"
-
 jobs:
 
   formatting:
@@ -17,12 +13,9 @@ jobs:
       - uses: axel-op/googlejavaformat-action@v3
         with:
           args: "--replace"
-#          skip-commit: true
+          skip-commit: true
 
-#      - name: git push
-#        run: |
-#          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-#          git config --global user.name "github-actions[bot]"
-#
-#          git commit --all -m "Google Java Format"
-#          git push origin HEAD:${{ github.ref_name }}
+      - name: Print diffs
+        run: |
+          echo "Please read the README.md file and install pre-commit hooks to properly format the files and resolve this error"
+          git --no-pager diff --exit-code
